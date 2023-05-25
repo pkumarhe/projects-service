@@ -5,10 +5,11 @@ spring:
     username: root
     password: Pradeep@123
   jpa:
-    hibernate.ddl-auto: create
+    hibernate.ddl-auto: update
     generate-ddl: true
     show-sql: true
 server:
+ port: 8082
  error:
   include-message: always
   include-binding-errors: always
