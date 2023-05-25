@@ -11,12 +11,12 @@ import lombok.Setter;
 public class ProjectUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long projectUserId;
     private Long userId;
     private String role;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "projectId")
+    @ManyToOne(fetch =FetchType.LAZY)
+    @JoinColumn(name = "project_id")
     @JsonBackReference(value = "project")
     private Project project;
 }

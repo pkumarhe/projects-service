@@ -3,9 +3,10 @@ package com.pradeep.api.projectws.service;
 import com.pradeep.api.projectws.entities.Project;
 import com.pradeep.api.projectws.entities.ProjectUser;
 import com.pradeep.api.projectws.exceptions.ResourceExistsException;
+import com.pradeep.api.projectws.exceptions.ResourceNotFoundException;
 
 public interface IProjectService {
     Project createProject(Project project) throws ResourceExistsException;
 
-    ProjectUser createProjectUser(Long projectId,ProjectUser projectUser) throws ResourceExistsException;
+    ProjectUser createProjectUser(Long projectId,ProjectUser projectUser) throws ResourceExistsException, ResourceNotFoundException;
 }

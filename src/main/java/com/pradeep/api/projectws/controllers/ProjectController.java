@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.pradeep.api.projectws.entities.Project;
 import com.pradeep.api.projectws.entities.ProjectUser;
 import com.pradeep.api.projectws.exceptions.ResourceExistsException;
+import com.pradeep.api.projectws.exceptions.ResourceNotFoundException;
 import com.pradeep.api.projectws.service.IProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,7 +25,7 @@ public class ProjectController {
     }
 
     @PostMapping("/{projectId}/projectuser")
-    public ResponseEntity<ProjectUser> createProjectUser(@PathVariable("projectId")  Long projectId,@RequestBody ProjectUser projectUser) throws ResourceExistsException, JsonProcessingException {
+    public ResponseEntity<ProjectUser> createProjectUser(@PathVariable("projectId")  Long projectId,@RequestBody ProjectUser projectUser) throws ResourceExistsException, JsonProcessingException, ResourceNotFoundException {
         ProjectUser savedProjectUser = projectService.createProjectUser(projectId,projectUser);
         return new ResponseEntity<ProjectUser>(savedProjectUser, HttpStatus.CREATED);
     }
