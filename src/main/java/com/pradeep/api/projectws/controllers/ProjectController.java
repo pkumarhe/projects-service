@@ -1,8 +1,8 @@
 package com.pradeep.api.projectws.controllers;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.pradeep.api.projectws.dtos.response.ProjectDto;
 import com.pradeep.api.projectws.dtos.response.ProjectUserDto;
-import com.pradeep.api.projectws.dtos.response.UserDto;
 import com.pradeep.api.projectws.entities.Project;
 import com.pradeep.api.projectws.entities.ProjectUser;
 import com.pradeep.api.projectws.exceptions.ResourceExistsException;
@@ -37,8 +37,12 @@ public class ProjectController {
     @GetMapping("/{projectId}/projectuser")
     public ResponseEntity<List<ProjectUserDto>> getProjectUsers(@PathVariable("projectId")  Long projectId) throws ResourceExistsException, ResourceNotFoundException {
         List<ProjectUserDto> projectUsers = projectService.getProjectUsers(projectId);
-        return new ResponseEntity<List<ProjectUserDto>>(projectUsers, HttpStatus.CREATED);
+        return new ResponseEntity<List<ProjectUserDto>>(projectUsers, HttpStatus.OK);
     }
 
-
+    @GetMapping("/projectuser/{userId}")
+    public ResponseEntity<List<ProjectDto>> getProjectsByUserId(@PathVariable("userId")  Long userId) throws ResourceExistsException, ResourceNotFoundException {
+        List<ProjectDto> projectsList = projectService.getProjectsByUserId(userId);
+        return new ResponseEntity<List<ProjectDto>>(projectsList, HttpStatus.OK);
+    }
 }

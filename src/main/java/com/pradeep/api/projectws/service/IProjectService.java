@@ -1,5 +1,6 @@
 package com.pradeep.api.projectws.service;
 
+import com.pradeep.api.projectws.dtos.response.ProjectDto;
 import com.pradeep.api.projectws.dtos.response.ProjectUserDto;
 import com.pradeep.api.projectws.dtos.response.UserDto;
 import com.pradeep.api.projectws.entities.Project;
@@ -15,4 +16,6 @@ public interface IProjectService {
     ProjectUser createProjectUser(Long projectId,ProjectUser projectUser) throws ResourceExistsException, ResourceNotFoundException;
 
     List<ProjectUserDto> getProjectUsers(Long projectId) throws ResourceNotFoundException;
+
+    List<ProjectDto> getProjectsByUserId(Long userId);
 }

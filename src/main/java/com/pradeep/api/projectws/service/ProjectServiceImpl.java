@@ -1,5 +1,6 @@
 package com.pradeep.api.projectws.service;
 
+import com.pradeep.api.projectws.dtos.response.ProjectDto;
 import com.pradeep.api.projectws.dtos.response.ProjectUserDto;
 import com.pradeep.api.projectws.dtos.response.UserDto;
 import com.pradeep.api.projectws.entities.Project;
@@ -64,6 +65,13 @@ public class ProjectServiceImpl implements IProjectService{
         });
 
         return p1;
+    }
+
+    @Override
+    public List<ProjectDto> getProjectsByUserId(Long userId) {
+        List<Project> listOfProjects=projectRepository.findByProjectUsers_UserId(userId);
+        List<ProjectDto> list2=listOfProjects.stream().parallel().map(p->new ProjectDto(p.getProjectId(),p.getProjectName())).collect(Collectors.toList());
+        return list2;
     }
 
     private void findByUserIdAndProjectId(Long userId, Long projectId) throws ResourceExistsException {

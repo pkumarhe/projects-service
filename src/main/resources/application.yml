@@ -17,5 +17,9 @@ server:
   include-binding-errors: always
   include-stacktrace: never
   include-exception: false
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
 
 UserWSServiceBaseURL: http://localhost:8080/api/users

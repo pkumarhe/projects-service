@@ -16,7 +16,7 @@ public class Project {
     private Long projectId;
     private String projectName;
 
-    @OneToMany(mappedBy = "project", cascade = {CascadeType.ALL})
+    @OneToMany(mappedBy="project", cascade = {CascadeType.ALL})
     @JsonManagedReference(value = "project")
     List<ProjectUser> projectUsers;
 }
